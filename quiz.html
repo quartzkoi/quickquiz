@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz Application</title>
+</head>
+<body style="background-color:lavender;">
+	<h1>General Knowledge - A Quick Quiz!</h1>
+	<form id="quiz-form"><center>
+		<h3>Question 1: What is the capital of the United States?</h3>
+		<input type="radio" name="q1" value="incorrect">Lincoln<br>
+		<input type="radio" name="q1" value="incorrect">New York City<br>
+		<input type="radio" name="q1" value="correct">Washington DC<br>
+
+		<h3>Question 2: What is the smallest planet in the Solar System?</h3>
+		<input type="radio" name="q2" value="correct">Mercury<br>
+		<input type="radio" name="q2" value="incorrect">Pluto<br>
+		<input type="radio" name="q2" value="incorrect">Mars<br>
+
+		<h3>Question 3: Which empire had the historical largest size in square acreage?</h3>
+		<input type="radio" name="q3" value="correct">British Empire<br>
+		<input type="radio" name="q3" value="incorrect">Mongol Empire<br>
+		<input type="radio" name="q3" value="incorrect">Qing Dynasty<br>
+
+		<h3>Question 4: Who starred in the 1953 movie "Law and Order"</h3>
+		<input type="radio" name="q4" value="incorrect">Buster Keaton<br>
+		<input type="radio" name="q4" value="correct">Ronald Reagan<br>
+		<input type="radio" name="q4" value="incorrect">Michael B. Jordan Sr.<br>
+
+		<h3>Question 5: Which continent is the most populous?</h3>
+		<input type="radio" name="q5" value="incorrect">North America<br>
+		<input type="radio" name="q5" value="correct">Asia<br>
+		<input type="radio" name="q5" value="incorrect">Australia<br>
+
+		<input type="submit" value="Submit">
+	</center></form>
+
+	<div id="result"></div>
+
+	<script>
+	const form = document.getElementById("quiz-form");
+	const result = document.getElementById("result");
+
+	form.addEventListener("submit", function(event) {
+		event.preventDefault();
+		let score = 0;
+		const answers = ["correct", "correct", "correct", "correct", "correct"];
+
+		for (let i = 1; i <= 5; i++) {
+			const answer = document.querySelector(`input[name=q${i}]:checked`);
+			if (!answer) {
+				alert("You must answer all questions!");
+				return;
+			}
+			
+			if (answer.value === answers[i-1]) {
+				score++;
+			}
+		}
+
+	result.innerHTML = `You scored ${score}/5. Congratulations!`;
+	});
+	</script>
+</body>
+</html>
